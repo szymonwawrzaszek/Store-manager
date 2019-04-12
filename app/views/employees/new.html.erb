@@ -1,0 +1,6 @@
+<h1>New employee for <%= @store.name %></h1>
+
+<%= render 'form', employee: @employee %>
+
+
+<%= link_to 'Back', store_employees_path(@store) %>

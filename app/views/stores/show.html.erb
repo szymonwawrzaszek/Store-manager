@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <strong>Phone num:</strong>
+  <strong>Phone:</strong>
   <%= @store.phone_num %>
 </p>
 
@@ -21,9 +21,35 @@
 </p>
 
 <p>
-  <strong>Opening hours:</strong>
+  <strong>Open hours:</strong>
   <%= @store.opening_hours %>
+</p>
+<p>
+  <strong>Employees:</strong>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>Position</th>
+    <th ></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @store.employees.each do |employee| %>
+      <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.surname %></td>
+        <td><%= employee.position %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
 </p>
 
 <%= link_to 'Edit', edit_store_path(@store) %> |
+<%= link_to 'Employees', store_employees_path(@store) %> |
 <%= link_to 'Back', stores_path %>
