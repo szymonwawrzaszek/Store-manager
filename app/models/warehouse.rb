@@ -1,5 +1,6 @@
 class Warehouse < ApplicationRecord
   has_and_belongs_to_many :stores
+  has_many :items, dependent: :destroy
 
   validates_presence_of :name, :address, :phone_num, :email, :warehouse_type
 

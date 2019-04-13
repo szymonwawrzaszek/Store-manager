@@ -12,7 +12,7 @@
       <th scope="col">Employees</th>
       <th scope="col">Warehouses</th>
       <th scope="col">Open hours</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -29,6 +29,7 @@
 
             <td><%= link_to 'Show', store, class: "btn btn-primary btn-sm" %></td>
             <td><%= link_to 'Edit', edit_store_path(store), class: "btn btn-primary btn-sm" %></td>
+            <td><%= link_to 'Item list', item_list_store_path(store), class: "btn btn-primary btn-sm" %></td>
             <td><%= link_to 'Employees', store_employees_path(store), class: "btn btn-primary btn-sm" %></td>
             <td><%= link_to 'Delete Store', store, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn  btn-sm delete" %></td>
 

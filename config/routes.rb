@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :stores do
     resources :employees
     member do
+      get :item_list
       get :warehouses
       post :warehouse_add
       post :warehouse_remove
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :warehouses do
+    resources :items
     member do
       get :assign
     end

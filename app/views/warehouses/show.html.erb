@@ -25,6 +25,33 @@
   <%= @warehouse.warehouse_type %>
 </p>
 
+
+    <p>
+      <strong>Items:</strong>
+      <% if @warehouse.items.any? %>
+    <table class="table table-sm width50">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @warehouse.items.each do |item| %>
+          <tr>
+            <td><%= item.name %></td>
+            <td><%= item.price %></td>
+            <td><%= item.quantity %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    Not assigned any items yet.
+<% end %>
+</p>
+</br></br>
 <%= link_to 'Assign', assign_warehouse_path(@warehouse), class: "btn btn-primary" %>
 <%= link_to 'Edit', edit_warehouse_path(@warehouse), class: "btn btn-primary" %>
 <%= link_to 'Back', warehouses_path, class: "btn btn-primary" %>

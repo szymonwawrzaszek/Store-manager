@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Warehouse:</strong>
+  <%= @item.warehouse.name %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @item.price %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @item.quantity %>
+</p>
+
+<%= link_to 'Edit', edit_warehouse_item_path(@warehouse, @item), class: "btn btn-primary " %>
+<%= link_to 'Back', warehouse_items_path(@warehouse), class: "btn btn-primary " %>

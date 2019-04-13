@@ -1,5 +1,5 @@
 class StoresController < ApplicationController
-  before_action :set_store, only: [:show, :edit, :update, :destroy]
+  before_action :set_store, only: [:show, :edit, :update, :destroy, :item_list, :warehouses, :warehouse_add, :warehouse_remove]
 
   # GET /stores
   # GET /stores.json
@@ -61,15 +61,18 @@ class StoresController < ApplicationController
     end
   end
 
+  # GET /stores/1/items
+  def item_list
+    @warehouses = @store.warehouses
+  end
+
   # GET /stores/1/warehouses
   def warehouses
-    @store = Store.find(params[:id])
     @warehouses = @store.warehouses
   end
 
   # POST /students/1/course_add?course_id=2
   def warehouse_add
-    @store = Store.find(params[:id])
     @warehouse = Warehouse.find(params[:warehouse])
     unless @store.assigned_in?(@warehouse)
       @store.warehouses << @warehouse
@@ -82,7 +85,6 @@ class StoresController < ApplicationController
 
   # POST /stores/1/warehouse_remove?warehouses[]=
   def warehouse_remove
-    @store = Store.find(params[:id])
     warehouse_ids = params[:warehouses]
     if warehouse_ids.any?
       warehouse_ids.each do |warehouse_id|

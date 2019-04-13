@@ -1,0 +1,7 @@
+<h1>Editing Item</h1>
+
+<%= render 'form', item: @item %>
+
+<%= link_to 'Show', [@warehouse, @item], class: "btn btn-primary " %>
+<%= link_to 'Back', warehouse_items_path(@warehouse), class: "btn btn-primary " %>
+
