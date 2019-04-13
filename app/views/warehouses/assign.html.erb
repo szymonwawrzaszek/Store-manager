@@ -1,0 +1,20 @@
+<h1>Assign for <%= @warehouse.name %></h1>
+<% if @warehouse.stores.count > 0 %>
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @warehouse.stores.each do |store| %>
+          <tr>
+            <td><%= link_to store.name, store %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% else %>
+    <p>No stores are assigned.</p>
+<% end %>
+<p><%= link_to "Back", @warehouse %></p>

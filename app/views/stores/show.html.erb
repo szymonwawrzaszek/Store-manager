@@ -24,6 +24,16 @@
   <strong>Open hours:</strong>
   <%= @store.opening_hours %>
 </p>
+
+<p>
+  <strong>Warehouses:</strong>
+  <% if !@store.warehouses.empty? %>
+      <%= @store.warehouses.collect {|c| link_to(c.name, c)}.join(", ").html_safe %>
+  <% else %>
+      Not assigned on any warehouses yet.
+  <% end %>
+</p>
+
 <% if @store.employees.any? %>
 <p>
   <strong>Employees:</strong>
@@ -51,5 +61,6 @@
 </p>
 <% end %>
 <%= link_to 'Edit', edit_store_path(@store), class: "btn btn-primary " %>
+<%= link_to 'Warehouses', warehouses_store_path(@store), class: "btn btn-primary" %>
 <%= link_to 'Employees', store_employees_path(@store), class: "btn btn-primary " %>
 <%= link_to 'Back', stores_path, class: "btn btn-primary " %>

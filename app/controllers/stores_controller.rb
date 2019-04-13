@@ -61,6 +61,42 @@ class StoresController < ApplicationController
     end
   end
 
+  # GET /stores/1/warehouses
+  def warehouses
+    @store = Store.find(params[:id])
+    @warehouses = @store.warehouses
+  end
+
+  # POST /students/1/course_add?course_id=2
+  def warehouse_add
+    @store = Store.find(params[:id])
+    @warehouse = Warehouse.find(params[:warehouse])
+    unless @store.assigned_in?(@warehouse)
+      @store.warehouses << @warehouse
+      flash[:notice] = 'Store was successfully assigned'
+    else
+      flash[:error] = 'Store was already assigned'
+    end
+    redirect_to action: "warehouses", id: @store
+  end
+
+  # POST /stores/1/warehouse_remove?warehouses[]=
+  def warehouse_remove
+    @store = Store.find(params[:id])
+    warehouse_ids = params[:warehouses]
+    if warehouse_ids.any?
+      warehouse_ids.each do |warehouse_id|
+        warehouse = Warehouse.find(warehouse_id)
+        if @store.assigned_in?(warehouse)
+          logger.info "Removing student from course #{warehouse.id}"
+          @store.courses.delete(warehouse)
+          flash[:notice] = 'Course was successfully deleted'
+        end
+      end
+    end
+    redirect_to action: "warehouses", id: @store
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_store

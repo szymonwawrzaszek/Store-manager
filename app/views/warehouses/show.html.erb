@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @warehouse.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @warehouse.address %>
+</p>
+
+<p>
+  <strong>Phone num:</strong>
+  <%= @warehouse.phone_num %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @warehouse.email %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @warehouse.warehouse_type %>
+</p>
+
+<%= link_to 'Assign', assign_warehouse_path(@warehouse), class: "btn btn-primary" %>
+<%= link_to 'Edit', edit_warehouse_path(@warehouse), class: "btn btn-primary" %>
+<%= link_to 'Back', warehouses_path, class: "btn btn-primary" %>

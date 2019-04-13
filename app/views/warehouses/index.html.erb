@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Warehouses</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Phone num</th>
+      <th scope="col">Email</th>
+      <th scope="col">Type</th>
+      <th scope="col">Assigned</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @warehouses.each do |warehouse| %>
+      <tr>
+        <td><%= warehouse.name %></td>
+        <td><%= warehouse.address %></td>
+        <td><%= warehouse.phone_num %></td>
+        <td><%= warehouse.email %></td>
+        <td><%= warehouse.warehouse_type %></td>
+        <td><%= warehouse.stores.count %></td>
+        <td><%= link_to 'Show', warehouse, class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_warehouse_path(warehouse), class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to 'Destroy', warehouse, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn  btn-sm delete" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Warehouse', new_warehouse_path, class: "btn btn-primary" %>

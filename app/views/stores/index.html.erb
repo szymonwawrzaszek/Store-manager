@@ -10,6 +10,7 @@
       <th scope="col">Phone</th>
       <th scope="col">Email</th>
       <th scope="col">Employees</th>
+      <th scope="col">Warehouses</th>
       <th scope="col">Open hours</th>
       <th colspan="3"></th>
     </tr>
@@ -23,6 +24,7 @@
         <td><%= store.phone_num %></td>
         <td><%= store.email %></td>
         <td><%= store.employees.count %></td>
+        <td><%= store.warehouses.count %></td>
         <td><%= store.opening_hours %></td>
 
             <td><%= link_to 'Show', store, class: "btn btn-primary btn-sm" %></td>

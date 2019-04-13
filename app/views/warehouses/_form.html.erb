@@ -1,0 +1,42 @@
+<%= form_with(model: warehouse, local: true) do |form| %>
+  <% if warehouse.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(warehouse.errors.count, "error") %> prohibited this warehouse from being saved:</h2>
+
+      <ul>
+      <% warehouse.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :warehouse_name, class: "form-control width20" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :warehouse_address, class: "form-control width20" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_num %>
+    <%= form.text_field :phone_num, id: :warehouse_phone_num, class: "form-control width20" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :warehouse_email, class: "form-control width20" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :warehouse_type %>
+    <%= form.select :warehouse_type, warehouse_type_options,{:include_blank => true}, {class: "form-control form-control-sm width20"} %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit :class => "btn btn-success" %>
+  </div>
+<% end %>

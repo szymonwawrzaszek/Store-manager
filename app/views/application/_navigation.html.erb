@@ -1,0 +1,18 @@
+<div style=" padding-bottom: 50px;">
+    <div style="  float: left;">
+      <%= link_to "Stores", stores_path, class: "btn btn-primary" %>
+      <%= link_to "Warehouses", warehouses_path, class: "btn btn-primary" %>
+      <%= link_to "Back", :back, class: "btn btn-warning" %><br /><br />
+    </div>
+    <div style="float: right;">
+      <% if current_user %>
+          Welcome <%= current_user.email %> <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+          <% if controller_name != 'registrations'%>
+              <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-primary" %>
+          <% end %>
+      <% elsif  controller_name != 'sessions' && controller_name !='registrations' && controller_name !='passwords'  %>
+          You're not logged in <%= link_to 'Log in', new_user_session_path, class: "btn btn-primary" %> or
+          <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<h1><%= @store.name %>'s warehouses</h1>
+<% if @warehouses.length > 0 %>
+    <%= form_tag(warehouse_remove_store_path(@store)) do %>
+        <table>
+          <thead>
+          <tr>
+            <th>Warehouse</th>
+            <th>Remove?</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% for warehouse in @warehouses do %>
+              <tr>
+                <td><%= warehouse.name %></td>
+                <td><%= check_box_tag "warehouses[]", warehouse.id %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <br />
+        <%= submit_tag 'Remove checked warehouses' %>
+    <% end %>
+<% else %>
+    <p>Not assigned in any warehouses yet.</p>
+<% end %>
+<h2>Assign in new warehouse</h2>
+<% if @store.warehouses.count < Warehouse.count %>
+    <%= form_tag(warehouse_add_store_path(@store)) do %>
+        <%= select_tag(:warehouse, options_from_collection_for_select(@store.unassigned_warehouses, :id, :name)) %>
+        <%= submit_tag 'Assign' %>
+    <% end %>
+<% else %>
+    <p><%= @store.name %> is assigned in every warehouse.</p>
+<% end %>
+<p><%=link_to "Back", @store %></p>
