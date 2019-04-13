@@ -35,5 +35,5 @@
   <%= @employee.work_time %>
 </p>
 
-<%= link_to 'Edit', edit_store_employee_path(@store, @employee) %> |
-<%= link_to 'Back', store_employees_path(@store) %>
+<%= link_to 'Edit', edit_store_employee_path(@store, @employee), class: "btn btn-primary " %>
+<%= link_to 'Back', store_employees_path(@store), class: "btn btn-primary " %>

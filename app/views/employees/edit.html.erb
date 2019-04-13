@@ -2,5 +2,5 @@
 
 <%= render 'form', employee: @employee %>
 
-<%= link_to 'Show', [@store, @employee] %> |
-<%= link_to 'Back', store_employees_path(@store) %>
+<%= link_to 'Show', [@store, @employee], class: "btn btn-primary " %>
+<%= link_to 'Back', store_employees_path(@store), class: "btn btn-primary " %>

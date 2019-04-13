@@ -24,16 +24,16 @@
   <strong>Open hours:</strong>
   <%= @store.opening_hours %>
 </p>
+<% if @store.employees.any? %>
 <p>
   <strong>Employees:</strong>
 
-<table>
+<table class="table table-sm width50">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Surname</th>
-    <th>Position</th>
-    <th ></th>
+    <th scope="col">Name</th>
+    <th scope="col">Surname</th>
+    <th scope="col">Position</th>
   </tr>
   </thead>
 
@@ -49,7 +49,7 @@
 </table>
 
 </p>
-
-<%= link_to 'Edit', edit_store_path(@store) %> |
-<%= link_to 'Employees', store_employees_path(@store) %> |
-<%= link_to 'Back', stores_path %>
+<% end %>
+<%= link_to 'Edit', edit_store_path(@store), class: "btn btn-primary " %>
+<%= link_to 'Employees', store_employees_path(@store), class: "btn btn-primary " %>
+<%= link_to 'Back', stores_path, class: "btn btn-primary " %>
