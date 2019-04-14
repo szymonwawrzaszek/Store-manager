@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :is_warehouse?
   before_action :get_warehouse
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
@@ -78,6 +79,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:warehouse_id, :name, :price, :quantity)
+      params.require(:item).permit(:warehouse_id, :name, :price, :quantity, :photo)
     end
   end

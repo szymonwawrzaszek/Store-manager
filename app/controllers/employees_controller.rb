@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  before_action :is_store?
   before_action :get_store
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
 

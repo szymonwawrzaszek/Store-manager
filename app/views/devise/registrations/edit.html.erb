@@ -31,6 +31,12 @@
     <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control width20" %>
   </div>
 
+    <div class="field">
+      <%= f.label :user_type %>
+      <%# :user_type_options from application_helper.rb not work %>
+      <%= f.select  :user_type, [['Admin','admin'], ['Store manager','store'], ['Warehouse manager','warehouse'], ['Customer','customer']],{ }, {class: "form-control form-control-sm width20"} %>
+    </div>
+
   <div class="actions">
     <%= f.submit "Update", class: "btn btn-success" %>
   </div>

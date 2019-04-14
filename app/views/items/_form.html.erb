@@ -1,5 +1,5 @@
  <%- #form_with(model: item, local: true) do |form| %>
-<%= form_for([@warehouse, item]) do |form| %>
+<%= form_for([@warehouse, item],html: { multipart: true}) do |form| %>
   <% if item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -25,6 +25,11 @@
   <div class="field">
     <%= form.label :quantity %>
     <%= form.number_field :quantity, id: :item_quantity, class: "form-control width20" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo %><br />
+    <%= form.file_field :photo %>
   </div>
 
   <div class="actions">

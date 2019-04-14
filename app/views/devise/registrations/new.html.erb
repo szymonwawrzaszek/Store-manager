@@ -1,5 +1,6 @@
 <h2>Sign up</h2>
 <br/>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -20,6 +21,12 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control width20" %>
   </div>
+
+    <div class="field">
+      <%= f.label :user_type %>
+      <%# :user_type_options from application_helper.rb not work %>
+      <%= f.select  :user_type, [['Admin','admin'], ['Store manager','store'], ['Warehouse manager','warehouse'], ['Customer','customer']],{ selected: 'customer'}, {class: "form-control form-control-sm width20"} %>
+    </div>
 
   <div class="actions">
     <%= f.submit "Sign up", :class => "btn btn-success" %>

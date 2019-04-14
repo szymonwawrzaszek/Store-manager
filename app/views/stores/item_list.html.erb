@@ -4,6 +4,7 @@
   <tr>
     <th scope="col">Items</th>
     <th scope="col">Price</th>
+    <th scope="col">Photo</th>
   </tr>
   </thead>
   <tbody>
@@ -12,6 +13,13 @@
         <tr >
           <td><%= item.name %></td>
           <td><%= item.price %></td>
+          <td>
+            <% if item.has_photo? %>
+                <%= image_tag item.photo_path, size: "200x120"%>
+            <% else %>
+                No photo.
+            <% end %>
+          </td>
         </tr>
       <% end %>
   <% end %>

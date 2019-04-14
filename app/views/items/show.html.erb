@@ -20,5 +20,14 @@
   <%= @item.quantity %>
 </p>
 
+<p>
+  <strong>Photo:</strong>
+  <% if @item.has_photo? %>
+      <%= image_tag @item.photo_path %>
+  <% else %>
+      No photo.
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_warehouse_item_path(@warehouse, @item), class: "btn btn-primary " %>
 <%= link_to 'Back', warehouse_items_path(@warehouse), class: "btn btn-primary " %>

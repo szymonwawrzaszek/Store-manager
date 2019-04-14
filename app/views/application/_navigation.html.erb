@@ -1,8 +1,9 @@
 <div style=" padding-bottom: 50px;">
     <div style="  float: left;">
-      <%= link_to "Stores", stores_path, class: "btn btn-primary" %>
-      <%= link_to "Warehouses", warehouses_path, class: "btn btn-primary" %>
+      <%= link_to "Stores", stores_path, class: "btn btn-primary" if store_admin %>
+      <%= link_to "Warehouses", warehouses_path, class: "btn btn-primary" if warehouse_admin %>
       <%= link_to "Back", :back, class: "btn btn-warning" %><br /><br />
+
     </div>
     <div style="float: right;">
       <% if current_user %>

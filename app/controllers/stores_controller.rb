@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  before_action :is_store?, only: [:update, :destroy]
   before_action :set_store, only: [:show, :edit, :update, :destroy, :item_list, :warehouses, :warehouse_add, :warehouse_remove]
 
   # GET /stores

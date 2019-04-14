@@ -28,10 +28,10 @@
         <td><%= store.opening_hours %></td>
 
             <td><%= link_to 'Show', store, class: "btn btn-primary btn-sm" %></td>
-            <td><%= link_to 'Edit', edit_store_path(store), class: "btn btn-primary btn-sm" %></td>
+            <td><%= link_to 'Edit', edit_store_path(store), class: "btn btn-primary btn-sm"  if store_admin %></td>
             <td><%= link_to 'Item list', item_list_store_path(store), class: "btn btn-primary btn-sm" %></td>
-            <td><%= link_to 'Employees', store_employees_path(store), class: "btn btn-primary btn-sm" %></td>
-            <td><%= link_to 'Delete Store', store, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn  btn-sm delete" %></td>
+            <td><%= link_to 'Employees', store_employees_path(store), class: "btn btn-primary btn-sm" if store_admin %></td>
+            <td><%= link_to 'Delete Store', store, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn  btn-sm delete" if store_admin%></td>
 
       </tr>
     <% end %>
@@ -40,5 +40,5 @@
 
 <br>
 
-<%= link_to 'New Store', new_store_path, class: "btn btn-primary"  %>
+<%= link_to 'New Store', new_store_path, class: "btn btn-primary" if store_admin %>
 

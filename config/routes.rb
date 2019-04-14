@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: "stores#index"
 
-  devise_for :users
-
+  #devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :stores do
     resources :employees
     member do
