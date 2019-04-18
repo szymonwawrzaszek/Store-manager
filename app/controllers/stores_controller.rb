@@ -64,7 +64,13 @@ class StoresController < ApplicationController
 
   # GET /stores/1/items
   def item_list
-    @warehouses = @store.warehouses
+    @items = @store.warehouses.collect{|w| w.items}.flatten
+    if params[:search]
+      @items = @items.select{|i| i.name.include? params[:search]}
+      @search = params[:search]
+    else
+      @items
+    end
   end
 
   # GET /stores/1/warehouses
@@ -108,6 +114,6 @@ class StoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def store_params
-      params.require(:store).permit(:name, :address, :phone_num, :email, :open_hours)
+      params.require(:store).permit(:name, :address, :phone_num, :email, :open_hours, :search)
     end
 end
